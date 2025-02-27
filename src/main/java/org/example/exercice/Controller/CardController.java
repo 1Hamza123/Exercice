@@ -20,7 +20,8 @@ public class CardController {
     }
 
     @GetMapping
-    public List<Card> getCards() {
+    public List<Card> getAllCards() {
+
         return cards;
     }
 
