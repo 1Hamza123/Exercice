@@ -3,6 +3,8 @@ package org.example.exercice.Controller;
 
 import org.example.exercice.Models.Card;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -22,6 +24,12 @@ public class CardController {
     @GetMapping
     public List<Card> getCards(){
         return cards;
+    }
+
+    @PostMapping("/add")
+    public Card addCard(@RequestBody Card card) {
+        cards.add(card);
+        return card;
     }
 
 }

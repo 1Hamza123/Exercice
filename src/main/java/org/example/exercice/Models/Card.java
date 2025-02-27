@@ -6,12 +6,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@NoArgsConstructor @AllArgsConstructor
+
 @Data
 public class Card {
     Long id;
     String holderName;
     Date expirationDate;
 
-
+    public Card(Long id, String holderName, Date expirationDate) {
+        this.id = id;
+        this.holderName = holderName;
+        this.expirationDate = expirationDate;
+    }
+    public Card(){}
 }
