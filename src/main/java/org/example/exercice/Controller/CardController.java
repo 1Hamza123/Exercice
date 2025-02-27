@@ -16,7 +16,7 @@ public class CardController {
     public CardController() {
         cards.add(new Card(1L, "Hamza", new Date()));
         cards.add(new Card(2L, "Amine", new Date()));
-        cards.add(new Card(3L, "Ali", new Date()));
+        cards.add(new Card(3L, "Test", new Date()));
     }
 
     @GetMapping
@@ -26,6 +26,7 @@ public class CardController {
 
     @PostMapping
     public Card addCard(@RequestBody Card card) {
+        if(card == null) return null;
         cards.add(card);
         return card;
     }
