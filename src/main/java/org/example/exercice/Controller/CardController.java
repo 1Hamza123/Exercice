@@ -30,4 +30,15 @@ public class CardController {
         cards.add(card);
         return card;
     }
-}
+    @DeleteMapping("/{id}")
+    public Boolean removeCard(@PathVariable("id") Long id){
+        return cards.stream()
+                .filter(c->c.getId().equals(id) )
+                .findFirst()
+                .map(card -> {
+                    cards.remove(card);
+                    return true;
+                })
+                .orElse(false);
+    }}
+
