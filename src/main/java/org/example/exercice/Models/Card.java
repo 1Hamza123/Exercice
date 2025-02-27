@@ -20,7 +20,7 @@ public class Card {
 
     public Card() {}
 
-    // Explicit Getters and Setters
+
     @JsonProperty("id")
     public Long getId() {
         return id;

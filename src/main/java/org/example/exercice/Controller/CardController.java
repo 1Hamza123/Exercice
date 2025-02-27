@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -31,4 +32,19 @@ public class CardController {
         cards.add(card);
         return card;
     }
+
+
+    @PutMapping("/{id}")
+    public Card updateCard(@PathVariable Long id, @RequestBody Card updatedCard) {
+        return cards.stream()
+                .filter(card -> card.getId().equals(id))
+                .findFirst()
+                .map(card -> {
+                    card.setHolderName(updatedCard.getHolderName());
+                    card.setExpirationDate(updatedCard.getExpirationDate());
+                    return updatedCard;
+                })
+                .orElse(null);
+    }
+
 }
