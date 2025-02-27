@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@RestController
+@RestController("/card")
 public class CardController {
 
     private List<Card> cards= Stream.of(
@@ -26,7 +26,7 @@ public class CardController {
         return cards;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public Card addCard(@RequestBody Card card) {
         cards.add(card);
         return card;
