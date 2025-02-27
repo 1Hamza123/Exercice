@@ -1,6 +1,7 @@
 package org.example.exercice.Controller;
 
 import org.example.exercice.Models.Product;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,14 +19,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getProducts() {
-        return products;
+    public ResponseEntity<List<Product>> getProducts() {
+        // used ResponseEntity for better Returns
+        return ResponseEntity.ok(products);
     }
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         products.add(product);
-        return product;
+        return ResponseEntity.ok(product);
     }
 
 }
