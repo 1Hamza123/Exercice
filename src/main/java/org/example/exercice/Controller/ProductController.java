@@ -31,10 +31,11 @@ public class ProductController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductByID(@PathVariable int id) {
-        for (Product product : products) {
-            if (product.getID() == id) return ResponseEntity.ok(product);
-        }
-        return ResponseEntity.notFound().build();
+        return products.stream()
+                .filter(product -> product.getID() == id)
+                .findFirst()
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
