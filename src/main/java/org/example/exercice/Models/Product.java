@@ -1,4 +1,4 @@
-package org.example.exercice.Models;
+/*package org.example.exercice.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,3 +12,4 @@ public class Product {
     String name;
     Double price;
 }
+*/
