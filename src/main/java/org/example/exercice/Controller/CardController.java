@@ -46,5 +46,16 @@ public class CardController {
                 })
                 .orElse(null);
     }
+    @DeleteMapping("/{id}")
+    public Boolean removeCard(@PathVariable("id") Long id){
+        return cards.stream()
+                .filter(c->c.getId().equals(id) )
+                .findFirst()
+                .map(card -> {
+                    cards.remove(card);
+                    return true;
+                })
+                .orElse(false);
+    }
 
 }
