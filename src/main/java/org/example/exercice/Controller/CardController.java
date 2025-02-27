@@ -1,28 +1,26 @@
 package org.example.exercice.Controller;
 
-
 import org.example.exercice.Models.Card;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-@RestController("/card")
+@RestController
+@RequestMapping("/card")
 public class CardController {
 
-    private List<Card> cards= Stream.of(
-            new Card(1L,"hamza", new Date()),
-            new Card(2L,"Amine",new Date())
-    ).collect(Collectors.toList());
+    private final List<Card> cards = new ArrayList<>();
+
+    public CardController() {
+        cards.add(new Card(1L, "Hamza", new Date()));
+        cards.add(new Card(2L, "Amine", new Date()));
+        cards.add(new Card(3L, "Ali", new Date()));
+    }
 
     @GetMapping
-    public List<Card> getCards(){
+    public List<Card> getCards() {
         return cards;
     }
 
@@ -31,5 +29,4 @@ public class CardController {
         cards.add(card);
         return card;
     }
-
 }
