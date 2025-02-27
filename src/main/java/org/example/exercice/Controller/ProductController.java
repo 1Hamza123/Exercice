@@ -29,5 +29,12 @@ public class ProductController {
         products.add(product);
         return ResponseEntity.ok(product);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductByID(@PathVariable int id) {
+        for (Product product : products) {
+            if (product.getID() == id) return ResponseEntity.ok(product);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
 }
